@@ -18,7 +18,7 @@ def home_1():
     # data = open('C:/Users/Hemanth Y/Desktop/Buddha.jpg', "rb")
     # info = Path('C:/Users/Hemanth Y/Desktop/Ganesh.jpg')
 
-    data = open(info['file_path'], "rb")
+    data = open(info['file_path'], 'rb')
 
     s3 = boto3.resource(
         's3',
