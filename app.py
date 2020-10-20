@@ -2,19 +2,23 @@ from flask import Flask, jsonify, request
 import boto3
 from botocore.client import Config
 
+
 app = Flask(__name__)
 
 
-@app.route("/sai", methods=['Post'])
+@app.route('/post', methods=['Post'])
 def home_1():
     info = request.get_json()
 
     ACCESS_KEY_ID = 'AKIAXB3Y4CS3GX34M5OS'
     ACCESS_SECRET_KEY = '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'
-    BUCKET_NAME = 'kumar775'
+    BUCKET_NAME = 'kumar776'
 
-    # data = open("C:/Users/Hemanth Y/Desktop/Ganesh.jpg", 'rb')
-    data = open(info['path'], "rb")
+    # data = open('Buddha.jpg', 'rb')
+    # data = open('C:/Users/Hemanth Y/Desktop/Buddha.jpg', "rb")
+    # info = Path('C:/Users/Hemanth Y/Desktop/Ganesh.jpg')
+
+    data = open(info['file_path'], "rb")
 
     s3 = boto3.resource(
         's3',
@@ -23,23 +27,22 @@ def home_1():
         config=Config(signature_version='s3v4')
     )
 
-    s3.Bucket(BUCKET_NAME).put_object(Key='Lord_Ganesh.jpg', Body=data)
+    s3.Bucket(BUCKET_NAME).put_object(Key='Ganesh_1.jpg', Body=data)
 
-    base_url = 'https://kumar775.s3.ap-south-1.amazonaws.com/'
-    file_name = 'Lord_Ganesh.jpg'
+    base_url = 'https://kumar776.s3.ap-south-1.amazonaws.com/'
+    file_name = 'Ganesh_1.jpg'
     final_url = base_url + file_name
 
     return jsonify({'url': final_url})
 
 
-@app.route("ias", methods=['Get'])
+@app.route('/get', methods=['Get'])
 def home_2():
-
-    base_url = 'https://kumar775.s3.ap-south-1.amazonaws.com/'
-    file_name = 'Buddha.jpg'
+    base_url = 'https://kumar776.s3.ap-south-1.amazonaws.com/'
+    file_name = 'Ganesh_1.jpg'
     final_url = base_url + file_name
 
-    return jsonify({'my_url': final_url})
+    return jsonify({'url': final_url})
 
 
 if __name__ == '__main__':
