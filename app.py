@@ -27,10 +27,10 @@ def home_1():
         config=Config(signature_version='s3v4')
     )
 
-    s3.Bucket(BUCKET_NAME).put_object(Key='Ganesh_1.jpg', Body=data)
+    s3.Bucket(BUCKET_NAME).put_object(Key=info['file_path'], Body=data)
 
     base_url = 'https://kumar776.s3.ap-south-1.amazonaws.com/'
-    file_name = 'Ganesh_1.jpg'
+    file_name = info['file_path']
     final_url = base_url + file_name
 
     return jsonify({'url': final_url})
@@ -39,7 +39,7 @@ def home_1():
 @app.route('/get', methods=['Get'])
 def home_2():
     base_url = 'https://kumar776.s3.ap-south-1.amazonaws.com/'
-    file_name = 'Ganesh_1.jpg'
+    file_name = 'Buddha.jpg'
     final_url = base_url + file_name
 
     return jsonify({'url': final_url})
