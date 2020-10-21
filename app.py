@@ -27,7 +27,7 @@ def home_1():
     )
     s3.Bucket(BUCKET_NAME).put_object(Key=info['file_path'], Body=data)
 
-    my_config = Config(signature_version='s3v4')
+    my_config = Config(signature_version=botocore.UNSIGNED)
     s3_cli = boto3.client('s3', config=my_config)
     params = {"Bucket": BUCKET_NAME, "Key": info['file_path']}
     final_url = s3_cli.generate_presigned_url('get_object', params)
@@ -38,6 +38,7 @@ def home_1():
 @app.route('/get', methods=['Get'])
 def home_2():
 
+    # my_config = Config(signature_version='s3v4')
     my_config = Config(signature_version=botocore.UNSIGNED)
     s3_cli = boto3.client('s3', config=my_config)
 
