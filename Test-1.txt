@@ -1,0 +1,111 @@
+## find the count of the number:
+
+from collections import defaultdict
+number = 156724671
+list1 = list(map(int, str(number)))
+d = defaultdict(int)
+for i in list1:
+    d[i] = d[i] + 1
+print(d)
+
+# trail1 (counting with count method)
+number = 156724671
+list1 = list(str(number))
+new_list = list(map(int, list1))
+print(new_list)
+for i in new_list:
+    c = new_list.count(i)
+    print('count of ', i, 'is', c)
+
+# trail 2 (counting particular number)
+number = 156724671
+list1 = list(map(int, str(number)))
+print(list1)
+c = 0
+for i in list1:
+    print(i)
+    if i == 1:  # here 1 is particular number 
+        c = c + 1	
+print(c)
+
+
+## find the runnerup:
+
+b = [1, 2, 3, 5, 5]
+a = list(set(b))
+max = 0
+for i in a:
+    if max <= i:
+        max = i
+print(max)
+a.remove(max)
+maxi = 0
+for j in a:
+    if maxi <= j:
+        maxi = j
+print(maxi)
+
+
+
+# find the count of a1, b2, a2, c1, b1, c2 :
+
+from collections import defaultdict
+string = 'a1b2a2c1b1c2a1'  # input
+new_list = []
+k = 0
+for i in string:
+    s = string[0 + k: 2 + k]
+    k = k + 2
+    new_list.append(s)
+    if k == len(string):
+        break
+print(new_list)
+d = defaultdict(int)
+for i in new_list:
+    d[i] = d[i] + 1
+print(d)
+
+# counting each individual element in string
+from collections import defaultdict
+string = 'a1a1bcbc223'
+dic = defaultdict(int)
+for i in string:
+    dic[i] = dic[i] + 1
+print(dic)
+
+
+# find the string without duplicates:
+
+s = 'acbbcab'
+x = list(s)
+print(x)
+y = list(set(x))
+print(y)
+z = ''.join(y)
+print(z)
+
+
+
+# find the intersection of two lists:
+
+list1 = ['a', 'b', 2, 'c', 1]
+list2 = ['d', 4, 'a', 'a', 2, 5]
+new_list = list(set(list1) ^ set(list2))
+print(new_list)
+
+# trail 1 
+from itertools import zip_longest
+list1 = ['a', 'b', 2, 'c', 1]
+list2 = ['d', 4, 'a', 'a', 2, 5]
+new_list = []
+for i, j in zip_longest(list1, list2):
+    print(j)
+    if i not in list2:
+        new_list.append(i)
+    if j not in list1:
+        new_list.append(j)
+print(new_list)
+
+
+
+
