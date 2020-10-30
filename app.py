@@ -18,14 +18,14 @@ def home_1():
 
     data = open(info['file_path'], "rb")
 
-    s3 = boto3.resource(
+    s3_res = boto3.resource(
         's3',
         aws_access_key_id=ACCESS_KEY_ID,
         aws_secret_access_key=ACCESS_SECRET_KEY,
         region_name=AWS_DEFAULT_REGION,
         config=Config(signature_version='s3v4')
     )
-    s3.Bucket(BUCKET_NAME).put_object(Key=info['file_path'], Body=data)
+    s3_res.Bucket(BUCKET_NAME).put_object(Key=info['file_path'], Body=data)
 
     my_config = Config(signature_version=botocore.UNSIGNED)
     s3_cli = boto3.client('s3', config=my_config)
